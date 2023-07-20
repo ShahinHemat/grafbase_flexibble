@@ -5,7 +5,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { fetchAllProjects } from "@/lib/actions";
 
 type SearchParams = {
-  category?: string | null;
+  category?: string | null | undefined;
   endcursor?: string | null;
 }
 
@@ -30,7 +30,7 @@ export const dynamicParams = true;
 export const revalidate = 0;
 
 const Home = async ({ searchParams: { category, endcursor } }: Props) => {
-    console.log('category:', category);
+    
   const data = await fetchAllProjects(category, endcursor) as ProjectSearch
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
