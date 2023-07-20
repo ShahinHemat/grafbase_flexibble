@@ -1,3 +1,4 @@
+
 import { ProjectInterface } from "@/common.types";
 import Categories from "@/components/Categories";
 import LoadMore from "@/components/LoadMore";
@@ -30,6 +31,8 @@ export const dynamicParams = true;
 export const revalidate = 0;
 
 const Home = async ({ searchParams: { category, endcursor } }: Props) => {
+  console.log('category:', category);
+  
     
   const data = await fetchAllProjects(category, endcursor) as ProjectSearch
 
