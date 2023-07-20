@@ -6,7 +6,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { fetchAllProjects } from "@/lib/actions";
 
 type SearchParams = {
-  category?: string | null | undefined;
+  category?: string | null;
   endcursor?: string | null;
 }
 
@@ -34,7 +34,7 @@ const Home = async ({ searchParams: { category, endcursor } }: Props) => {
   console.log('category:', category);
   
     
-  const data = await fetchAllProjects(category, endcursor) as ProjectSearch
+  const data = await fetchAllProjects(category || null, endcursor) as ProjectSearch
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
 
